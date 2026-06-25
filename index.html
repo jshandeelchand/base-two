@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Learning Hub</title>
+    <style>
+        /* --- Accessibility & Reset Styles --- */
+        :root {
+            --primary-color: #0044cc; /* High contrast blue */
+            --text-color: #1a1a1a;    /* Off-black for readability */
+            --bg-color: #f9f9f9;      /* Light gray background to reduce eye strain */
+            --card-bg: #ffffff;
+            --focus-outline: #ffbf47; /* High visibility focus color */
+        }
+
+        body {
+            font-family: Arial, sans-serif; /* Clean sans-serif font */
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Skip to content link for keyboard-only users */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid var(--focus-outline);
+        }
+
+        /* --- Layout --- */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .activity-section {
+            margin-bottom: 3rem;
+        }
+
+        /* --- Accessible Components --- */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+
+        a {
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Clear focus state for keyboard navigation */
+        a:focus, button:focus {
+            outline: 3px solid var(--focus-outline);
+            outline-offset: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: #0033aa;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <h1>Mr./Ms. Smith's Classroom Hub</h1>
+        <p>Accessible learning materials and weekly activities.</p>
+    </header>
+
+    <main id="main-content">
+        
+        <section class="activity-section" aria-labelledby="welcome-heading">
+            <h2 id="welcome-heading">Welcome, Students!</h2>
+            <p>Below you will find your learning modules for this week. Please complete the tasks in order. If you need help, you can email me using the link at the bottom of the page.</p>
+        </section>
+
+        <section class="activity-section" aria-labelledby="week1-heading">
+            <h2 id="week1-heading">Module 1: Introduction to Ecosystems</h2>
+            
+            <div class="card">
+                <h3>1. Watch & Learn: What is an Ecosystem?</h3>
+                <p>Watch this 5-minute video introducing ecosystems. Make sure to turn on closed captions (CC) if you need them.</p>
+                <a href="https://example.com/video-link" class="btn">Watch Video: Ecosystems Introduction</a>
+            </div>
+
+            <div class="card">
+                <h3>2. Practice Interactive Activity</h3>
+                <p>Review the vocabulary flashcards to practice the terms we learned in the video.</p>
+                <a href="https://example.com/quizlet" class="btn">Open Ecosystem Flashcards</a>
+            </div>
+
+            <div class="card">
+                <h3>3. Short Quiz</h3>
+                <p>Complete this quick 5-question check-for-understanding Google Form. You can take it as many times as you need.</p>
+                <a href="https://example.com/google-form" class="btn">Take the Week 1 Review Quiz</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Need help? Contact your teacher at: <a href="mailto:teacher@school.edu">teacher@school.edu</a></p>
+        <p>This page is designed to be fully screen-reader and keyboard accessible.</p>
+    </footer>
+
+</body>
+</html>
