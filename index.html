@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Learning Hub</title>
     <style>
-        /* --- Accessibility & Reset Styles --- */
-        :root {
-            --primary-color: #0044cc; /* High contrast blue */
-            --text-color: #1a1a1a;    /* Off-black for readability */
-            --bg-color: #f9f9f9;      /* Light gray background to reduce eye strain */
-            --card-bg: #ffffff;
-            --focus-outline: #ffbf47; /* High visibility focus color */
-        }
+       header.image-header {
+    background-color: transparent; /* Removes the blocky background */
+    padding: 0;
+    text-align: center;
+}
+
+.header-banner {
+    width: 100%;
+    max-width: 800px; /* Keeps it from stretching too wide on desktops */
+    height: auto;     /* Maintains the image's proportions */
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px; /* Softens the sharp corners of the image */
+}
+
 
         body {
             font-family: Arial, sans-serif; /* Clean sans-serif font */
@@ -111,10 +118,10 @@
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header>
-        <h1>Welcome to the ONLINE Base One</h1>
-        <p>Accessible learning materials and weekly activities.</p>
-    </header>
+    <header class="image-header">
+    <img src="banner.png" alt="Mr./Ms. Smith's Classroom Hub: Accessible learning materials and weekly activities." class="header-banner">
+</header>
+
 
     <main id="main-content">
         
