@@ -3,113 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Learning Hub</title>
+    <title>Home Learning | Student Hub</title>
     <style>
-    header.image-header {
-    width: 100%;       
-    margin: 0;         
-    padding: 0;        
-    overflow: hidden;
-}
-
-.header-banner {
-    width: 100%;       
-    height: 140px;     
-    object-fit: cover; 
-    object-position: center; 
-    display: block;
-}
-
-        body {
-            font-family: Arial, sans-serif; /* Clean sans-serif font */
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
+        /* --- Base1 --- */
+        :root {
+            --bg-color: #fafafa;       /* Ultra-clean, off-white background */
+            --text-main: #1e293b;      /* Soft charcoal main text */
+            --text-muted: #64748b;     /* Slate gray for descriptions */
+            --tile-bg: #ffffff;        /* Crisp white tiles */
+            --tile-border: #e2e8f0;    /* Light border for structure */
+            --focus-ring: #3b82f6;     /* Accessible blue focus outline */
+            
+            /* Subject Heading Colors */
+            --color-english: #b91c1c;   /* Deep Red */
+            --color-maths: #0369a1;     /* Deep Blue */
+            --color-wellbeing: #0f766e; /* Teal */
+            --color-digital: #6d28d9;   /* Purple */
         }
 
-        /* Skip to content link for keyboard-only users */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Skip Link for Accessibility --- */
         .skip-link {
             position: absolute;
             top: -40px;
-            left: 0;
-            background: var(--primary-color);
+            left: 1rem;
+            background: var(--text-main);
             color: white;
-            padding: 8px;
+            padding: 0.5rem 1rem;
             z-index: 100;
-            transition: top 0.2s;
+            border-radius: 4px;
         }
-        .skip-link:focus {
-            top: 0;
-            outline: 3px solid var(--focus-outline);
-        }
+        .skip-link:focus { top: 1rem; }
 
-        /* --- Layout --- */
+        /* --- Minimalist Header --- */
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 1.5rem 1.5rem;
+            border-bottom: 1px solid var(--tile-border);
         }
 
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.025em;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            margin: 0;
+        }
+
+        /* --- Main Content Layout --- */
         main {
-            max-width: 800px;
+            max-width: 900px;
             margin: 2rem auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
         }
 
-        .activity-section {
+        .welcome-section {
             margin-bottom: 3rem;
         }
 
-        /* --- Accessible Components --- */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        h1, h2, h3 {
+        .welcome-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-top: 0;
         }
 
-        a {
-            color: var(--primary-color);
-            font-weight: bold;
+        .section-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- The Responsive Smooth Box Grid --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* --- The Clickable Smooth Box (Tile) --- */
+        .tile {
+            background-color: var(--tile-bg);
+            border: 1px solid var(--tile-border);
+            border-radius: 16px; /* Creates the "smooth" curved look */
+            padding: 1.75rem;
+            text-decoration: none; /* Removes underline from the whole box */
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        /* Hover & Focus Effects */
+        .tile:hover {
+            transform: translateY(-4px); /* Subtle lift effect */
+            border-color: #cbd5e1;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .tile:focus {
+            outline: 3px solid var(--focus-ring);
+            outline-offset: 4px;
+        }
+
+        /* --- Icon & Heading Styles Inside Tiles --- */
+        .tile-icon {
+            font-size: 1.75rem; /* Large, clear emojis */
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .tile-subject {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Distinct Color Headings per Subject */
+        .tile[data-subject="english"] .tile-subject { color: var(--color-english); }
+        .tile[data-subject="maths"] .tile-subject { color: var(--color-maths); }
+        .tile[data-subject="wellbeing"] .tile-subject { color: var(--color-wellbeing); }
+        .tile[data-subject="digital"] .tile-subject { color: var(--color-digital); }
+
+        .tile-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .tile-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin: 0 0 1.5rem 0;
+            flex-grow: 1; /* Pushes the action link to the bottom */
+        }
+
+        .tile-action {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+        }
+
+        .tile:hover .tile-action {
             text-decoration: underline;
         }
 
-        /* Clear focus state for keyboard navigation */
-        a:focus, button:focus {
-            outline: 3px solid var(--focus-outline);
-            outline-offset: 2px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white !important;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 0.5rem;
-        }
-
-        .btn:hover {
-            background-color: #0033aa;
-        }
-
+        /* --- Footer --- */
         footer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-            color: #666;
-            border-top: 1px solid #ddd;
-            margin-top: 4rem;
+            max-width: 900px;
+            margin: 6rem auto 3rem auto;
+            padding: 2rem 1.5rem 0 1.5rem;
+            border-top: 1px solid var(--tile-border);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
     </style>
 </head>
@@ -117,46 +189,60 @@
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="image-header">
-    <img src="banner.png" alt="Welcome to Base One Online!" class="header-banner">
-</header>
-
+    <header>
+        <h1>Base One - Online Learning Zone</h1>
+        <p>Here are some tasks you can do today!</p>
+    </header>
 
     <main id="main-content">
         
-        <section class="activity-section" aria-labelledby="welcome-heading">
-            <h2 id="welcome-heading">Welcome buddies!</h2>
-            <p>Here are your learning options - have fun, try your best, and believe in yourselves!</p>
+        <section class="welcome-section">
+            <h2>You are great!</h2>
+            <p>Here are your options for today - good luck, and remember to say positive things about yourself and others!</p>
         </section>
 
-        <section class="activity-section" aria-labelledby="week1-heading">
-            <h2 id="week1-heading">Module 1: Introduction to Ecosystems</h2>
-            
-            <div class="card">
-                <h3>1. Watch & Learn: What is an Ecosystem?</h3>
-                <p>Watch this 5-minute video introducing ecosystems. Make sure to turn on closed captions (CC) if you need them.</p>
-                <a href="https://example.com/video-link" class="btn">Watch Video: Ecosystems Introduction</a>
-            </div>
+        <h3 class="section-title">Pick something to explore</h3>
 
-            <div class="card">
-                <h3>2. Practice Interactive Activity</h3>
-                <p>Review the vocabulary flashcards to practice the terms we learned in the video.</p>
-                <a href="https://example.com/quizlet" class="btn">Open Ecosystem Flashcards</a>
-            </div>
+        <div class="grid">
 
-            <div class="card">
-                <h3>3. Short Quiz</h3>
-                <p>Complete this quick 5-question check-for-understanding Google Form. You can take it as many times as you need.</p>
-                <a href="https://example.com/google-form" class="btn">Take the Week 1 Review Quiz</a>
-            </div>
+            <a href="english-activity.html" class="tile" data-subject="english">
+                <span class="tile-icon" aria-hidden="true">🖱️</span>
+                <span class="tile-subject">Heading1</span>
+                <h4 class="tile-title">Heading2</h4>
+                <p class="tile-desc">DescribeTask</p>
+                <span class="tile-action">Select! &rarr;</span>
+            </a>
 
-        </section>
+            <a href="maths-activity.html" class="tile" data-subject="maths">
+                <span class="tile-icon" aria-hidden="true">⚔️</span>
+                <span class="tile-subject">Maths</span>
+                <h4 class="tile-title">Bridge Battle</h4>
+                <p class="tile-desc">Answer quickly, win the round, and battle your way across the grid boards.</p>
+                <span class="tile-action">Let's go &rarr;</span>
+            </a>
 
+            <a href="https://forms.google.com" class="tile" data-subject="wellbeing" target="_blank" rel="noopener">
+                <span class="tile-icon" aria-hidden="true">💬</span>
+                <span class="tile-subject">Check In</span>
+                <h4 class="tile-title">How are you doing?</h4>
+                <p class="tile-desc">A quick, friendly check-in. Take a moment to share how your day is going (opens in a new tab).</p>
+                <span class="tile-action">Let's go &rarr;</span>
+            </a>
+
+            <a href="https://wordwall.net" class="tile" data-subject="digital" target="_blank" rel="noopener">
+                <span class="tile-icon" aria-hidden="true">🤖</span>
+                <span class="tile-subject">Digital Media</span>
+                <h4 class="tile-title">AI Basics & Mazes</h4>
+                <p class="tile-desc">Navigate a digital maze while learning what AI is and how it impacts everyday life (opens in a new tab).</p>
+                <span class="tile-action">Let's go &rarr;</span>
+            </a>
+
+        </div>
     </main>
 
     <footer>
-        <p>Need help? Contact your teacher at: <a href="mailto:teacher@school.edu">teacher@school.edu</a></p>
-        <p>This page is designed to be fully screen-reader and keyboard accessible.</p>
+        <div>Student Hub &middot; Classroom Community</div>
+        <div>Need help? Email your teacher.</div>
     </footer>
 
 </body>
